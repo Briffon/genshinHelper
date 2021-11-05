@@ -1,0 +1,19 @@
+.dailies-container {
+  border: 3px solid red;
+  background-color: #fcfaf9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 4;
+}
+
+.dailies-container-catalog {
+  width: 90%;
+  height: 20%;
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+}

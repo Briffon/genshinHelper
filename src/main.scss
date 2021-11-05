@@ -1,0 +1,23 @@
+@import "./SCSS/reset.scss";
+@import "./SCSS/Nav/index.scss";
+@import "./SCSS/Landing/index.scss";
+@import "./SCSS/Button/index.scss";
+@import "./SCSS/Footer/index.scss";
+@import "./SCSS/Dailies/index.scss";
+@import "./SCSS/Card/index.scss";
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+body {
+  background-color: rgb(34, 34, 34);
+  width: 100vw;
+  position: relative;
+  font-family: "Audiowide", cursive;
+}
+
+.web-container {
+  height: 110vh;
+}
+
+.web-page {
+  height: 100vh;
+}

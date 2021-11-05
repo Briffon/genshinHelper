@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+.landing-login-container {
+  //   background: url("https://www.pixel4k.com/wp-content/uploads/2021/03/genshin-impact-2021-4k_1615133168.jpg")
+  //     no-repeat center center fixed;
+  //   -webkit-background-size: cover;
+  //   -moz-background-size: cover;
+  //   -o-background-size: cover;
+  //   background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.48);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-family: "Audiowide", cursive;
+    font-size: 72px;
+  }
+}
+
+.landing-login-container::after {
+  content: "";
+  background-image: url("https://www.pixel4k.com/wp-content/uploads/2021/03/genshin-impact-2021-4k_1615133168.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+.landing-login-container-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  color: white;
+  width: 90%;
+  height: 50%;
+  img {
+    width: 17vw;
+    transform: rotate(78deg);
+    height: 30vh;
+  }
+}
+
+.landing-login-container-buttons {
+  width: 80%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button:nth-of-type(1) {
+    margin-right: 5rem;
+  }
+}
