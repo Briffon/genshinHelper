@@ -5,18 +5,17 @@ function Dailies() {
   const [teams, setTeams] = useState([]);
 
   useEffect(() => {
+    //get teams from user
     const tempTeams = localStorage.getItem("teams");
+    //set the teams to the state
     setTeams(tempTeams);
   }, []);
 
-  // const onClick = (e) => {
-  //   e.stopPropagation();
-  //   window.location = "/Build";
-  // };
   return (
     <div className="web-page dailies-container">
       <h1>Dailies</h1>
       <div className="dailies-container-catalog">
+        {/* If teams exist display them, otherwise prompt for a new start */}
         {teams === [] ? (
           <div>test</div>
         ) : (

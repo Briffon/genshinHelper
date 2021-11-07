@@ -5,6 +5,7 @@ function CharacterModify(props) {
   const [level, setLevel] = useState(1);
 
   useEffect(() => {
+    //if there is no previous character data set default values
     if (!char.charLevel) {
       let tempChar = {
         name: char.name,
@@ -15,13 +16,14 @@ function CharacterModify(props) {
         talent3: 1,
         talent4: 1,
       };
-      console.log(tempChar);
       localStorage.setItem("char", JSON.stringify(tempChar));
       setChar(tempChar);
     } else {
+      //set the previous data from the user
       setChar(JSON.parse(localStorage.getItem("char")));
     }
 
+    //set all values of the form inputs
     setLevel(char.charLevel);
 
     let selectorOne = document.getElementById("talent-level-1");
@@ -35,17 +37,21 @@ function CharacterModify(props) {
     });
   }, [char.charLevel, char.name, char.img]);
 
+  //on input change find the input and set the value, also save progress of the user
   const onChange = (input) => {
+    //assign input values
     let value = input.target.value;
     let type = input.target.id;
     let tempChar = char;
 
     switch (type) {
       case "character-level":
+        //set the level to the state and temporary character
         tempChar.charLevel = value;
         setLevel(value);
         break;
       case "talent-level-1":
+        //get the option id from the input and set it to temporary character
         let option = input.target.options.selectedIndex;
         tempChar.talent1 = option + 1;
         break;
@@ -64,6 +70,8 @@ function CharacterModify(props) {
       default:
         break;
     }
+
+    //save teh temporary character to state and local-storage
     console.log(tempChar);
     localStorage.setItem("char", JSON.stringify(tempChar));
     setChar(tempChar);
@@ -85,10 +93,12 @@ function CharacterModify(props) {
   //   }
   // };
 
+  //sets the selected option for the selector inputs
   const formatSelector = (selector, id) => {
     if (selector.options) {
       switch (id) {
         case 0:
+          //convert the html collection into an array and go through each selector's options and set the correct option as selected
           Array.prototype.slice.call(selector.options).forEach((opt, index) => {
             if (index === char.talent1 - 1) {
               opt.setAttribute("selected", true);
@@ -120,15 +130,6 @@ function CharacterModify(props) {
           break;
       }
     }
-    // if (selectorOne.options) {
-    //   console.log(selectorOne.options);
-    //   Array.prototype.slice.call(selectorOne.options).map((opt, index) => {
-    //     console.log(opt);
-    //     if (index === char.talent1 - 1) {
-    //       opt.setAttribute("selected", true);
-    //     }
-    //   });
-    // }
   };
   return (
     <div className="character-modify-container">
