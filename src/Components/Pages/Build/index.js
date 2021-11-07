@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function Build() {
   const [orientation, setOrientation] = useState("");
-  const [chars, setChars] = useState([]);
+  // const [chars, setChars] = useState([]);
   useEffect(() => {
     setOrientation(localStorage.getItem("build-state"));
     switch (orientation) {
@@ -25,7 +25,7 @@ function Build() {
         tempArr.push(char);
       });
 
-      setChars(tempArr);
+      // setChars(tempArr);
     }
     getChars();
   }, [orientation]);
