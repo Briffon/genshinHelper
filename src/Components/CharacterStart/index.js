@@ -10,14 +10,16 @@ function CharacterStart(props) {
       {/* {console.log(props.characters)} */}
       {props.characters
         ? props.characters.map((char, index) => {
-            return (
-              <Card
-                key={index}
-                action={(e) => props.onClick(e, char)}
-                txt={char.name}
-                img={char.img}
-              />
-            );
+            if (index <= 4) {
+              return (
+                <Card
+                  key={index}
+                  action={(e) => props.onClick(e, char)}
+                  txt={char.name}
+                  img={char.img}
+                />
+              );
+            }
           })
         : null}
     </div>

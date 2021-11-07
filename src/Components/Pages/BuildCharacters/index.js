@@ -28,13 +28,6 @@ function BuildCharacters() {
     setPhase("charSelected");
   };
 
-  const clear = () => {
-    //clears the phase and character
-    //add a confirm button later
-    localStorage.setItem("phase", "start");
-    localStorage.removeItem("char");
-    window.location.reload(false);
-  };
   return (
     <div className="web-page build-characters-container">
       <h1>Build Characters</h1>
@@ -49,8 +42,6 @@ function BuildCharacters() {
 
       {/* character has already been selected phase */}
       {phase === "charSelected" ? <CharacterModify char={character} /> : null}
-
-      <button onClick={clear}>clear</button>
     </div>
   );
 }

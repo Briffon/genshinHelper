@@ -131,6 +131,16 @@ function CharacterModify(props) {
       }
     }
   };
+
+  const clear = () => {
+    //clears the phase and character
+    //add a confirm button later
+
+    localStorage.setItem("phase", "start");
+    localStorage.removeItem("char");
+    window.location.reload(false);
+  };
+
   return (
     <div className="character-modify-container">
       <h2>{props.char.name}</h2>
@@ -219,6 +229,7 @@ function CharacterModify(props) {
           <option value="1">10</option>
         </select>
       </form>
+      <button onClick={clear}>clear</button>
     </div>
   );
 }

@@ -40,7 +40,7 @@ function Teams() {
     getChar(name);
   };
   return (
-    <div className="teams-container">
+    <div className="web-page teams-container">
       <h1>test</h1>
       <form onSubmit={submitForm}>
         <label htmlFor="name">Character:</label>
