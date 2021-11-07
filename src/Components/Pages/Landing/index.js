@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../Button";
-import logo from "../../assets/Group 35.png";
+import logo from "../../assets/logo.png";
+
 function Landing() {
   return (
     <div className=" web-page landing-login-container">
