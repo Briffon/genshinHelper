@@ -3,7 +3,7 @@ import Button from "../../Button";
 import logo from "../../assets/Group 35.png";
 function Landing() {
   return (
-    <div className="landing-login-container">
+    <div className=" web-page landing-login-container">
       <div className="landing-login-container-content">
         <h1>Impact Tools</h1>
         <img src={logo} alt="signup logo" />

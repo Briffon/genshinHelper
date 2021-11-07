@@ -5,6 +5,7 @@
 @import "./SCSS/Footer/index.scss";
 @import "./SCSS/Dailies/index.scss";
 @import "./SCSS/Card/index.scss";
+@import "./SCSS/Build/index.scss";
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
 body {
@@ -15,9 +16,10 @@ body {
 }
 
 .web-container {
-  height: 110vh;
+  // height: 110vh;
 }
 
 .web-page {
-  height: 100vh;
+  min-height: 100vh;
+  background-color: white;
 }

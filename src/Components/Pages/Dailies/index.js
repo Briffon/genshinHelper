@@ -8,6 +8,11 @@ function Dailies() {
     const tempTeams = localStorage.getItem("teams");
     setTeams(tempTeams);
   }, []);
+
+  // const onClick = (e) => {
+  //   e.stopPropagation();
+  //   window.location = "/Build";
+  // };
   return (
     <div className="web-page dailies-container">
       <h1>Dailies</h1>
@@ -15,15 +20,9 @@ function Dailies() {
         {teams === [] ? (
           <div>test</div>
         ) : (
-          <Card
-            onClick={(e) => {
-              e.preventDefault();
-              console.log("test");
-            }}
-            img=""
-            alt=""
-            txt="Add new Set"
-          />
+          <a href="/Build">
+            <Card img="" alt="" txt="Add new Set" />
+          </a>
         )}
       </div>
     </div>
