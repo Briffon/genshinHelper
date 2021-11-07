@@ -8,6 +8,7 @@ function BuildCharacters() {
   const [character, setCharacter] = useState({});
 
   useEffect(() => {
+    //get the previous state of the page and character from the user or set to default
     setPhase(
       localStorage.getItem("phase") ? localStorage.getItem("phase") : "start"
     );
@@ -19,6 +20,7 @@ function BuildCharacters() {
   }, [phase]);
 
   const onClick = (e, char) => {
+    //saves the state of the phase and character and takes user to the next phase, character modifications/view ascension materials
     e.stopPropagation();
     localStorage.setItem("phase", "charSelected");
     localStorage.setItem("char", JSON.stringify(char));
@@ -26,39 +28,20 @@ function BuildCharacters() {
     setPhase("charSelected");
   };
 
-  const clear = () => {
-    localStorage.setItem("phase", "start");
-    localStorage.removeItem("char");
-    window.location.reload(false);
-  };
   return (
     <div className="web-page build-characters-container">
       <h1>Build Characters</h1>
+
+      {/* start phase of character building */}
       {phase === "start" ? (
         <CharacterStart
           onClick={onClick}
           characters={CharacterList.characters}
         />
-      ) : // CharacterList.characters.map((char, index) => {
-      //     if (index <= 5) {
-      //       return (
-      //         <div className="build-container-start">
-      //           <Card
-      //             action={(e) => onClick(e, char)}
-      //             txt={char.name}
-      //             img={char.img}
-      //           />
-      //         </div>
-      //       );
-      //     } else {
-      //       return null;
-      //     }
-      //   })
-      null}
+      ) : null}
 
+      {/* character has already been selected phase */}
       {phase === "charSelected" ? <CharacterModify char={character} /> : null}
-
-      <button onClick={clear}>clear</button>
     </div>
   );
 }
