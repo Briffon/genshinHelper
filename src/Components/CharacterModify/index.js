@@ -3,9 +3,11 @@ import React, { useState, useEffect } from "react";
 function CharacterModify(props) {
   const [char, setChar] = useState(JSON.parse(localStorage.getItem("char")));
   const [level, setLevel] = useState(1);
+  const [t1, setT1] = useState("");
+  const [t2, setT2] = useState("");
+  const [t3, setT3] = useState("");
 
   useEffect(() => {
-    //if there is no previous character data set default values
     if (!char.charLevel) {
       let tempChar = {
         name: char.name,
@@ -16,42 +18,61 @@ function CharacterModify(props) {
         talent3: 1,
         talent4: 1,
       };
+      console.log(tempChar);
       localStorage.setItem("char", JSON.stringify(tempChar));
       setChar(tempChar);
     } else {
-      //set the previous data from the user
       setChar(JSON.parse(localStorage.getItem("char")));
     }
 
-    //set all values of the form inputs
     setLevel(char.charLevel);
 
     let selectorOne = document.getElementById("talent-level-1");
     let selectorTwo = document.getElementById("talent-level-2");
     let selectorThree = document.getElementById("talent-level-3");
-    let selectorFour = document.getElementById("talent-level-4");
-    let selectors = [selectorOne, selectorTwo, selectorThree, selectorFour];
+    let selectors = [selectorOne, selectorTwo, selectorThree];
 
     selectors.forEach((selector, index) => {
       formatSelector(selector, index);
     });
+
+    //get names for characters talents
+    async function getTalents() {
+      const tempChar = await getInfo(`characters/${char.name}`);
+      console.log(tempChar);
+
+      for (let i = 0; i < tempChar.skillTalents.length; i++) {
+        console.log(tempChar.skillTalents[i].name);
+        switch (i) {
+          case 0:
+            setT1(tempChar.skillTalents[i].name);
+            break;
+          case 1:
+            setT2(tempChar.skillTalents[i].name);
+            break;
+          case 2:
+            setT3(tempChar.skillTalents[i].name);
+            break;
+          default:
+            break;
+        }
+      }
+    }
+
+    getTalents();
   }, [char.charLevel, char.name, char.img]);
 
-  //on input change find the input and set the value, also save progress of the user
   const onChange = (input) => {
-    //assign input values
     let value = input.target.value;
     let type = input.target.id;
     let tempChar = char;
 
     switch (type) {
       case "character-level":
-        //set the level to the state and temporary character
         tempChar.charLevel = value;
         setLevel(value);
         break;
       case "talent-level-1":
-        //get the option id from the input and set it to temporary character
         let option = input.target.options.selectedIndex;
         tempChar.talent1 = option + 1;
         break;
@@ -70,35 +91,31 @@ function CharacterModify(props) {
       default:
         break;
     }
-
-    //save teh temporary character to state and local-storage
     console.log(tempChar);
     localStorage.setItem("char", JSON.stringify(tempChar));
     setChar(tempChar);
   };
 
-  // const getInfo = (url) => {
-  //   //try fetching from given url
-  //   //https://api.genshin.dev/
-  //   try {
-  //     return fetch(`https://api.genshin.dev/${url}`).then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       } else {
-  //         return "error";
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const getInfo = (url) => {
+    //try fetching from given url
+    //https://api.genshin.dev/
+    try {
+      return fetch(`https://api.genshin.dev/${url}`).then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return "error";
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  //sets the selected option for the selector inputs
   const formatSelector = (selector, id) => {
     if (selector.options) {
       switch (id) {
         case 0:
-          //convert the html collection into an array and go through each selector's options and set the correct option as selected
           Array.prototype.slice.call(selector.options).forEach((opt, index) => {
             if (index === char.talent1 - 1) {
               opt.setAttribute("selected", true);
@@ -119,34 +136,17 @@ function CharacterModify(props) {
             }
           });
           break;
-        case 3:
-          Array.prototype.slice.call(selector.options).forEach((opt, index) => {
-            if (index === char.talent4 - 1) {
-              opt.setAttribute("selected", true);
-            }
-          });
-          break;
         default:
           break;
       }
     }
   };
-
-  const clear = () => {
-    //clears the phase and character
-    //add a confirm button later
-
-    localStorage.setItem("phase", "start");
-    localStorage.removeItem("char");
-    window.location.reload(false);
-  };
-
   return (
     <div className="character-modify-container">
       <h2>{props.char.name}</h2>
       <img src={props.char.img} alt={props.char.name} />
       <form>
-        <label htmlFor="character-level">Character Level</label>
+        <h3>Character level</h3>
         <input
           name="character-level"
           id="character-level"
@@ -156,8 +156,8 @@ function CharacterModify(props) {
           value={level}
           onChange={(e) => onChange(e)}
         />
-
-        <label htmlFor="talent-level-1">Choose Your Talent Level</label>
+        <h3>Talent Levels</h3>
+        <label htmlFor="talent-level-1">{t1}</label>
         <select
           onChange={(e) => onChange(e)}
           name="talent-level-1"
@@ -175,7 +175,7 @@ function CharacterModify(props) {
           <option value="1">10</option>
         </select>
 
-        <label htmlFor="talent-level-2">Choose Your Talent Level</label>
+        <label htmlFor="talent-level-2">{t2}</label>
         <select
           onChange={(e) => onChange(e)}
           name="talent-level-2"
@@ -193,7 +193,7 @@ function CharacterModify(props) {
           <option value="1">10</option>
         </select>
 
-        <label htmlFor="talent-level-3">Choose Your Talent Level</label>
+        <label htmlFor="talent-level-3">{t3}</label>
         <select
           onChange={(e) => onChange(e)}
           name="talent-level-3"
@@ -210,26 +210,7 @@ function CharacterModify(props) {
           <option value="1">9</option>
           <option value="1">10</option>
         </select>
-
-        <label htmlFor="talent-level-4">Choose Your Talent Level</label>
-        <select
-          onChange={(e) => onChange(e)}
-          name="talent-level-4"
-          id="talent-level-4"
-        >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="1">6</option>
-          <option value="1">7</option>
-          <option value="1">8</option>
-          <option value="1">9</option>
-          <option value="1">10</option>
-        </select>
       </form>
-      <button onClick={clear}>clear</button>
     </div>
   );
 }
