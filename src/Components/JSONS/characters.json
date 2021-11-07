@@ -1,0 +1,89 @@
+{
+  "characters": [
+    { "name": "albedo", "img": "./characters/albedo.png" },
+
+    { "name": "aloy", "img": "./characters/aloy.png" },
+
+    { "name": "amber", "img": "./characters/amber.png" },
+
+    { "name": "ayaka", "img": "./characters/ayaka.png" },
+
+    { "name": "barbara", "img": "./characters/barbara.png" },
+
+    { "name": "beidou", "img": "./characters/beidou.png" },
+
+    { "name": "bennett", "img": "./characters/bennett.png" },
+
+    { "name": "chongyun", "img": "./characters/chongyun.png" },
+
+    { "name": "diluc", "img": "./characters/diluc.png" },
+
+    { "name": "diona", "img": "./characters/diona.png" },
+
+    { "name": "eula", "img": "./characters/eula.png" },
+
+    { "name": "fischl", "img": "./characters/fischl.png" },
+
+    { "name": "ganyu", "img": "./characters/ganyu.png" },
+
+    { "name": "hu-tao", "img": "./characters/hu-tao.png" },
+
+    { "name": "jean", "img": "./characters/jean.png" },
+
+    { "name": "kaeya", "img": "./characters/kaeya.png" },
+
+    { "name": "kazuha", "img": "./characters/kazuha.png" },
+
+    { "name": "keqing", "img": "./characters/keqing.png" },
+
+    { "name": "klee", "img": "./characters/klee.png" },
+
+    { "name": "kokomi", "img": "./characters/kokomi.png" },
+
+    { "name": "lisa", "img": "./characters/lisa.png" },
+
+    { "name": "mona", "img": "./characters/mona.png" },
+
+    { "name": "ningguang", "img": "./characters/ningguang.png" },
+
+    { "name": "noelle", "img": "./characters/noelle.png" },
+
+    { "name": "qiqi", "img": "./characters/qiqi.png" },
+
+    { "name": "raiden", "img": "./characters/raiden.png" },
+
+    { "name": "razor", "img": "./characters/razor.png" },
+
+    { "name": "rosaria", "img": "./characters/rosaria.png" },
+
+    { "name": "sara", "img": "./characters/sara.png" },
+
+    { "name": "sayu", "img": "./characters/sayu.png" },
+
+    { "name": "sucrose", "img": "./characters/sucrose.png" },
+
+    { "name": "tartaglia", "img": "./characters/tartaglia.png" },
+
+    { "name": "traveler-anemo", "img": "./characters/traveler-anemo.png" },
+
+    { "name": "traveler-electro", "img": "./characters/traveler-electro.png" },
+
+    { "name": "traveler-geo", "img": "./characters/traveler-geo.png" },
+
+    { "name": "venti", "img": "./characters/venti.png" },
+
+    { "name": "xiangling", "img": "./characters/xiangling.png" },
+
+    { "name": "xiao", "img": "./characters/xiao.png" },
+
+    { "name": "xingqiu", "img": "./characters/xingqiu.png" },
+
+    { "name": "xinyan", "img": "./characters/xinyan.png" },
+
+    { "name": "yanfei", "img": "./characters/yanfei.png" },
+
+    { "name": "yoimiya", "img": "./characters/yoimiya.png" },
+
+    { "name": "zhongli", "img": "./characters/zhongli.png" }
+  ]
+}
